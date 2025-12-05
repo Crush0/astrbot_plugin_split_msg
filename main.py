@@ -3,7 +3,7 @@ from astrbot.api.star import Context, Star, register
 from astrbot.api.message_components import Plain
 from pysbd import Segmenter
 from astrbot.core.message.message_event_result import MessageChain
-@register("helloworld", "YourName", "一个简单的 Hello World 插件", "1.0.0")
+@register("split_msg", "Crush0", "一个简单的消息分割插件", "1.0.5")
 class MyPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
