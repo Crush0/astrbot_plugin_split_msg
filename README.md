@@ -1,9 +1,7 @@
-# helloworld
+# AstrBot 消息分片插件
 
-AstrBot 插件模板
+将超长消息自动拆分为多条发送，避免平台单条消息长度限制导致发送失败。
 
-A template plugin for AstrBot plugin feature
+## 功能
+- 自动检测消息长度，超过阈值时按段落/句子拆分
 
-# 支持
-
-[帮助文档](https://astrbot.app)
