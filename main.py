@@ -18,7 +18,7 @@ class MyPlugin(Star):
             if isinstance(msg, Plain):
                 result.extend([MessageChain([Plain(text)]) for text in self.cn_segmenter.segment(msg.text)])
             else:
-                result.append(msg)
+                result.append(MessageChain([msg]))
         for i in result:
             await event.send(i)
         event.stop_event()
