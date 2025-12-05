@@ -1,0 +1,7 @@
+{
+    "words_count_threshold": {
+        "type": "int",
+        "description": "消息分块阈值，默认值为 15",
+        "default": 15
+    }
+}
