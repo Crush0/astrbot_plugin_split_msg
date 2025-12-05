@@ -4,7 +4,7 @@ from astrbot.api.message_components import Plain
 from astrbot.api import AstrBotConfig
 from pysbd import Segmenter
 @register("split_msg", "Crush0", "一个简单的消息分割插件", "1.0.5")
-class MyPlugin(Star):
+class SplitMsgPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
         super().__init__(context)
         self.ctx = context
@@ -26,15 +26,18 @@ class MyPlugin(Star):
             ]:
                 new_chain = []
                 for comp in result.chain:
-                    if len(comp.text) < self.words_count_threshold:
-                        # 不分段回复
-                        new_chain.append(comp)
-                        continue
-                    if not comp.text.isascii():
-                        split_response = self.cn_segmenter.segment(comp.text)
+                    if isinstance(comp, Plain):
+                        if len(comp.text) < self.words_count_threshold:
+                            # 不分段回复
+                            new_chain.append(comp)
+                            continue
+                        if not comp.text.isascii():
+                            split_response = self.cn_segmenter.segment(comp.text)
+                        else:
+                            split_response = self.en_segmenter.segment(comp.text)
+                        new_chain.extend([Plain(text) for text in split_response if text.strip()])
                     else:
-                        split_response = self.en_segmenter.segment(comp.text)
-                    new_chain.extend([Plain(text) for text in split_response if text.strip()])
+                        new_chain.append(comp)
                 result.chain = new_chain
                 event.set_result(result)
 
