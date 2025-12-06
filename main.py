@@ -10,6 +10,7 @@ class SplitMsgPlugin(Star):
         self.ctx = context
         self.config = config
         self.words_count_threshold = self.config.get("words_count_threshold", 15)
+        self.enable = self.config.get("enable", True)
         self.cn_segmenter = Segmenter(language="zh", clean=False)
         self.en_segmenter = Segmenter(language="en", clean=False)
 
@@ -23,7 +24,7 @@ class SplitMsgPlugin(Star):
                 "qq_official",
                 "weixin_official_account",
                 "dingtalk",
-            ] and result.is_llm_result():
+            ] and result.is_llm_result() and self.enable:
                 new_chain = []
                 for comp in result.chain:
                     if isinstance(comp, Plain):

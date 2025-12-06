@@ -1,1 +1,2 @@
 pysbd==0.3.4
+volcengine-python-sdk==4.0.39
