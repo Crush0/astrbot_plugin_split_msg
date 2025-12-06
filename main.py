@@ -23,7 +23,7 @@ class SplitMsgPlugin(Star):
                 "qq_official",
                 "weixin_official_account",
                 "dingtalk",
-            ]:
+            ] and result.is_llm_result():
                 new_chain = []
                 for comp in result.chain:
                     if isinstance(comp, Plain):
