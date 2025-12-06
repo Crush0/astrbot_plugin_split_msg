@@ -1,9 +1,9 @@
 from astrbot.api.event import filter, AstrMessageEvent
-from astrbot.api.star import Context, Star, register
+from astrbot.api.star import Context, Star
 from astrbot.api.message_components import Plain
 from astrbot.api import AstrBotConfig
 from pysbd import Segmenter
-@register("split_msg", "Crush0", "一个简单的消息分割插件", "1.0.5")
+
 class SplitMsgPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
         super().__init__(context)
