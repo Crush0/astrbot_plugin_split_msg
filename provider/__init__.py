@@ -1,1 +1,0 @@
-from .volcengine_embedding_source import VolcengineEmbeddingProviderAdapter
