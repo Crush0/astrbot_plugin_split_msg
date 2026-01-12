@@ -1,14 +1,15 @@
+from astrbot.core.provider.entities import ProviderType
 from astrbot.core.provider.register import register_provider_adapter
 from astrbot.core.provider.provider import EmbeddingProvider
 from volcenginesdkarkruntime import AsyncArk
+
 @register_provider_adapter(
     "volcengine_embedding",
     "火山引擎 API Embedding 提供商适配器",
     provider_type=ProviderType.EMBEDDING,
 )
 class VolcengineEmbeddingProviderAdapter(EmbeddingProvider):
-    def __init__(self, provider_config: dict, provider_settings: dict) -> None:
-        super().__init__(context, config)
+    def __init__(self, provider_config: dict, provider_settings: dict):
         super().__init__(provider_config, provider_settings)
         self.provider_config = provider_config
         self.provider_settings = provider_settings
@@ -46,4 +47,4 @@ class VolcengineEmbeddingProviderAdapter(EmbeddingProvider):
 
     def get_dim(self) -> int:
         """获取向量的维度"""
-        return self.provider_config.get("embedding_dimensions", 1024)
+        return self.provider_config.get("embedding_dimensions", 2048)

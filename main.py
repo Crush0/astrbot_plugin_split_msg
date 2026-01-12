@@ -3,6 +3,7 @@ from astrbot.api.star import Context, Star
 from astrbot.api.message_components import Plain
 from astrbot.api import AstrBotConfig
 from pysbd import Segmenter
+import provider
 
 class SplitMsgPlugin(Star):
     def __init__(self, context: Context, config: AstrBotConfig):
